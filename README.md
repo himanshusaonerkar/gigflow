@@ -1,90 +1,98 @@
-🚀 GigFlow – Mini Freelance Marketplace
+**GigFlow – Mini Freelance Marketplace**
+GigFlow is a full-stack freelance marketplace where users can post jobs (Gigs) and other users can apply by submitting bids. Clients can review bids and hire exactly one freelancer per gig. This project demonstrates secure authentication, role-agnostic users, complex database relationships, and atomic hiring logic.
 
-GigFlow is a full-stack freelance marketplace where users can post jobs (Gigs) and other users can apply by submitting bids. Clients can review bids and hire exactly one freelancer per gig.
+**Tech Stack :**
+**1. Frontend**
+   a. React.js (Vite)
+   b. Tailwind CSS
+   c. Redux Toolkit
+   d. Axios
+   e. React Router
 
-This project demonstrates secure authentication, role-agnostic users, complex database relationships, and atomic hiring logic.
+**2. Backend**
+	a. Node.js
+	b. Express.js
+	c. MongoDB (Mongoose)
+	d. JWT Authentication (HttpOnly Cookies)
 
-🛠 Tech Stack
-Frontend
+**Features**
+1. Authentication
+2. User registration & login
+3. JWT stored in HttpOnly cookies
+4. Secure protected routes
 
-React.js (Vite)
+**Gig Management**
+1. Create gigs (title, description, budget)
+2. View all open gigs
+3. Gig status: open → assigned
 
-Tailwind CSS
+**Bidding System**
+1. Freelancers can submit bids on gigs
+2. Bids include message and proposed price
+3. Bid status: pending, hired, rejected
 
-Redux Toolkit
+**Hiring Logic (Core Feature)**
+1. Only the gig owner can hire
+2. Only one freelancer can be hired
+3. All other bids are automatically rejected
+4. Prevents rehiring on already assigned gigs
 
-Axios
-
-React Router
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB (Mongoose)
-
-JWT Authentication (HttpOnly Cookies)
-
-✨ Features
-🔐 Authentication
-
-User registration & login
-
-JWT stored in HttpOnly cookies
-
-Secure protected routes
-
-📋 Gig Management
-
-Create gigs (title, description, budget)
-
-View all open gigs
-
-Gig status: open → assigned
-
-💬 Bidding System
-
-Freelancers can submit bids on gigs
-
-Bids include message and proposed price
-
-Bid status: pending, hired, rejected
-
-🤝 Hiring Logic (Core Feature)
-
-Only the gig owner can hire
-
-Only one freelancer can be hired
-
-All other bids are automatically rejected
-
-Prevents rehiring on already assigned gigs
-
-📁 Project Structure
-gigflow/
+**Project Structure**
+Gig Flow/
 ├── gigflow-server/
 │   ├── controllers/
+│   │    ├── auth.controller.js
+│   │    ├── bid.controller.js
+│ 	│    └── gig.controller.js
 │   ├── models/
+│   │    ├── bid.js
+│   │    ├── gig.js
+│ 	│    └── user.js
 │   ├── routes/
+│   │    ├── auth.routes.js
+│   │    ├── bid.routes.js
+│ 	│    └── gig.routes.js
 │   ├── middleware/
+│ 	│    └── auth.middleware.js
 │   ├── index.js
-│   ├── .env.example
+│   ├── .env
 │   └── package.json
 │
 └── gigflow-client/
     ├── src/
     │   ├── components/
+		│   │    ├── BidCard.jsx
+		│   │    ├── ErrorMessage.jsx
+		│   │    ├── Loader.jsx
+		│   │    ├── Navbar.jsx
+		│   │    └── ProtectedRoute.jsx
     │   ├── pages/
+		│   │    ├── CreateGig.jsx
+		│   │    ├── Dashboard.jsx
+		│   │    ├── GigDetails.jsx
+		│   │    ├── Login.jsx
+		│   │    └── ProtectedRoute.jsx── Register.jsx
     │   ├── redux/
+		│   │    ├── authSlice.js
+		│   │    └── store.js
     │   ├── services/
+		│   │    └── api.js
     │   ├── App.jsx
+		│   ├── App.css
+		│   ├── index.css
     │   └── main.jsx
     └── package.json
 
-🔗 API Endpoints
-Auth
+**API Endpoints**
+**1. Auth**
+├── Register
+│   ├── POST
+│   ├── /api/auth/register
+│   └── Register new user
+├── Login
+│   ├── POST
+│   ├── /api/auth/login
+│   └── Login & set JWT cookie
 Method	Endpoint	Description
 POST	/api/auth/register	Register new user
 POST	/api/auth/login	Login & set JWT cookie
