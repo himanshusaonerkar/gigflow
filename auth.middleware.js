@@ -1,0 +1,8 @@
+import jwt from "jsonwebtoken";
+
+export const protect = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) return res.sendStatus(401);
+  req.user = jwt.verify(token, process.env.JWT_SECRET);
+  next();
+};
